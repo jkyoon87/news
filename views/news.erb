@@ -23,7 +23,31 @@
   <body>
 
     <div class="container mt-5">
-      <h1>News</h1>
+      <h1>Kellogg Weather News</h1>
+      <hr>
+      <h2>Today</h2>
+      <h5> <%= @forecast["current"]["weather"][0]["main"] %>
+      <%= @forecast["current"]["temp"] %> (Celcius)
+      </h5>
+      <hr>
+      <h2>Future weather</h2>
+         <% for day in @forecast["daily"] %>
+         <%= day["weather"][0]["main"] %></h5>
+         <p>Max: <%= day["temp"]["max"].round(1) %> (Celcius) </p>
+         <p>Min: <%= day["temp"]["min"].round(1) %> (Celcius) </p>
+         <% end %>
+    
+     <hr>
+      <h2>News Headlines</h2>
+         <% for news in @news["articles"] %>
+            <p><%= news["title"] %></p>
+            <p><%= news["content"] %></p>
+            <a href="<%= news["url"] %>" class="btn btn-primary card-btn">Read More</a>
+            <% end %>
+        
+    <hr>
+
+
     </div>
 
     <!-- Optional JavaScript -->
